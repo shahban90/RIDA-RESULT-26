@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congratulations Rida Zahra</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Orbitron:wght@700&family=Montserrat:wght@500;700&family=Reem+Kufi:wght@500&display=swap" rel="stylesheet">
+    <!-- Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease infinite;
+            font-family: 'Montserrat', sans-serif;
+            color: #fff;
+            text-align: center;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Gift Box Screen */
+        #gift-screen {
+            position: absolute;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: opacity 0.5s ease;
+        }
+        .gift-box {
+            font-size: 6rem;
+            animation: bounce 1.5s infinite alternate;
+            filter: drop-shadow(0 0 25px rgba(255, 51, 102, 0.8));
+        }
+        @keyframes bounce {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(-15px) scale(1.1); }
+        }
+        .gift-text {
+            font-family: 'Reem Kufi', sans-serif;
+            font-size: 1.5rem;
+            margin-top: 20px;
+            color: #ff99cc;
+            background: rgba(0,0,0,0.4);
+            padding: 10px 25px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 0 15px rgba(255,51,102,0.4);
+        }
+
+        /* Main Container (Hidden Initially) */
+        .container {
+            max-width: 650px;
+            width: 90%;
+            margin: 20px auto;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 10;
+            display: none;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .container.show {
+            display: block;
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Rainbow Glow Title */
+        .rainbow-glow-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.6rem;
+            margin-bottom: 5px;
+            animation: rainbowGlow 6s linear infinite;
+        }
+        @keyframes rainbowGlow {
+            0%   { color: #ff3366; text-shadow: 0 0 15px #ff3366; }
+            33%  { color: #ffff00; text-shadow: 0 0 15px #ffff00; }
+            66%  { color: #00ffff; text-shadow: 0 0 15px #00ffff; }
+            100% { color: #ff3366; text-shadow: 0 0 15px #ff3366; }
+        }
+
+        .subtitle {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #ffccff;
+        }
+
+        /* Result Card */
+        .result-card {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 20px;
+            margin: 15px 0;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            margin: 8px 0;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            font-size: 1.05rem;
+        }
+        .result-label { color: #ffccff; font-weight: 700; }
+        .result-value { color: #ffff99; font-weight: bold; }
+
+        /* Poetry & Congrats Box */
+        .poetry-box {
+            font-family: 'Reem Kufi', sans-serif;
+            background: rgba(20, 10, 30, 0.8);
+            padding: 18px;
+            border-radius: 15px;
+            margin: 15px 0;
+            border: 1px solid rgba(255, 100, 150, 0.4);
+            font-size: 1.15rem;
+            line-height: 2.1;
+            color: #ffebf2;
+        }
+
+        .footer-note {
+            font-size: 0.95rem;
+            color: #ff99cc;
+            margin-top: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Gift Box Opening Screen -->
+    <div id="gift-screen" onclick="openGift()">
+        <div class="gift-box">🎁</div>
+        <div class="gift-text">Tap to Open Your Surprise, Rida! ✨</div>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="container" id="main-container">
+        <h1 class="rainbow-glow-title">Congratulations! 🎉</h1>
+        <div class="subtitle">✨ HSSC First Annual Examination 2026 ✨</div>
+
+        <div class="result-card">
+            <div class="result-row">
+                <span class="result-label">Student Name:</span>
+                <span class="result-value">Rida Zahra</span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Total Marks:</span>
+                <span class="result-value">649 / 1100</span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Status:</span>
+                <span class="result-value" style="color: #33cc33;">PASS 🌟</span>
+            </div>
+        </div>
+
+        <div class="poetry-box">
+            "Har khushi aap ke qadmon mein ho,<br>
+            Allah pak aap ko har maidan mein kamyabi ata farmaye!" 🤲✨<br>
+            MashaAllah, bohot bohot mubarak ho Rida Zahra! 🎊
+        </div>
+
+        <div class="footer-note">
+            <p>✨ Wishing You Even More Success Ahead ✨</p>
+        </div>
+    </div>
+
+    <script>
+        function openGift() {
+            // Fade out gift screen
+            const giftScreen = document.getElementById('gift-screen');
+            giftScreen.style.opacity = '0';
+            setTimeout(() => {
+                giftScreen.style.display = 'none';
+                // Show main container
+                const mainContainer = document.getElementById('main-container');
+                mainContainer.classList.add('show');
+                
+                // Trigger massive confetti explosion
+                triggerConfetti();
+            }, 500);
+        }
+
+        function triggerConfetti() {
+            var duration = 3 * 1000;
+            var end = Date.now() + duration;
+
+            (function frame() {
+                confetti({
+                    particleCount: 7,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 }
+                });
+                confetti({
+                    particleCount: 7,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 }
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }
+    </script>
+
+</body>
+</html>
